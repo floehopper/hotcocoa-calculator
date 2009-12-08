@@ -2,6 +2,8 @@
 # Port of Jon Lipsky's weblog post: http://blog.elevenworks.com/?p=38
 #
 require 'hotcocoa'
+
+require 'accumulator'
 require 'display'
 
 include HotCocoa
@@ -12,10 +14,10 @@ class Calculator
     self.new.show
   end
   
-  attr_accessor :accumulator, :value, :button_view
+  attr_accessor :value, :button_view
   
   def initialize
-    @accumulator = []
+    @accumulator = Accumulator.new
     @display = Display.new
   end
 
@@ -73,11 +75,10 @@ class Calculator
     end
     
     def evaluate
-      accumulator << @display.to_f
-      result = eval(accumulator.join(" "))
+      @accumulator.push(@display.to_f)
+      result = @accumulator.evaluate
       @display.set(result)
       value.text = @display.to_s
-      accumulator.clear
     end
     
     def press(key)
@@ -86,8 +87,8 @@ class Calculator
     end
     
     def operand(key)
-      accumulator << @display.to_f
-      accumulator << key
+      @accumulator.push(@display.to_f)
+      @accumulator.push(key)
       @display.clear
     end
     
