@@ -1,5 +1,6 @@
-require 'test/unit'
-require File.expand_path(File.join(File.dirname(__FILE__), '..', '..', 'lib', 'display'))
+require File.expand_path(File.join(File.dirname(__FILE__), '..', 'test_helper'))
+
+require 'display'
 
 class DisplayTest < Test::Unit::TestCase
   
