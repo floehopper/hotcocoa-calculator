@@ -91,10 +91,6 @@ class Calculator
       @display.clear
     end
     
-    def float_value
-      (value.to_s[0,1] == "." ? "0#{value.to_s}" : value.to_s).to_f
-    end
-    
     def sqrt
       result = Math.sqrt(@display.to_f)
       @display.set(result)
