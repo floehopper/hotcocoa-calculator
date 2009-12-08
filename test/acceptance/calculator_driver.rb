@@ -3,14 +3,6 @@ require 'test/unit/assertions'
 
 module CalculatorDriver
   
-  ADD_BUTTON = '+'
-  SUBTRACT_BUTTON = '-'
-  MULTIPLY_BUTTON = '*'
-  DIVIDE_BUTTON = '/'
-  
-  CALCULATE_BUTTON = '='
-  CLEAR_BUTTON = 'CL'
-  
   include Appscript
   include Test::Unit::Assertions
   
