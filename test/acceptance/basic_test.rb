@@ -33,6 +33,15 @@ class BasicTest < Test::Unit::TestCase
     displays_number('-1')
   end
   
+  def test_result_after_inputting_float_which_is_actually_an_integer
+    click_button('1')
+    click_button('.')
+    click_button('0')
+    click_button('=')
+    
+    displays_number('1')
+  end
+  
   def test_cannot_enter_multiple_leading_zeroes
     click_button('0')
     click_button('0')
