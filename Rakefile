@@ -19,7 +19,7 @@ else
   
     Rake::TestTask.new(:acceptance) do |t|
       t.libs << 'test/acceptance'
-      t.test_files = FileList['test/acceptance/*test.rb']
+      t.test_files = FileList['test/acceptance/test_suite.rb']
       t.verbose = true
     end
   
