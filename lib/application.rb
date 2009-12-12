@@ -3,11 +3,10 @@
 #
 require 'hotcocoa'
 
-require 'accumulator'
-require 'display'
-require 'view'
-
 include HotCocoa
+
+require 'model'
+require 'view'
 
 class Calculator
   
@@ -16,8 +15,7 @@ class Calculator
   end
   
   def initialize
-    @accumulator = Accumulator.new
-    @display = Display.new
+    @model = Model.new
   end
   
   def show
@@ -36,32 +34,27 @@ class Calculator
   end
   
   def evaluate
-    @accumulator.push(@display.to_f)
-    result = @accumulator.evaluate
-    @display.set(result)
-    @view.value.text = @display.to_s
+    @model.evaluate
+    @view.value.text = @model.display.to_s
   end
   
   def press(key)
-    @display.push(key)
-    @view.value.text = @display.to_s
+    @model.press(key)
+    @view.value.text = @model.display.to_s
   end
   
   def operand(key)
-    @accumulator.push(@display.to_f)
-    @accumulator.push(key)
-    @display.clear
+    @model.operand(key)
   end
   
   def sqrt
-    result = Math.sqrt(@display.to_f)
-    @display.set(result)
-    @view.value.text = @display.to_s
+    @model.sqrt
+    @view.value.text = @model.display.to_s
   end
   
   def clear
-    @display.clear
-    @view.value.text = @display.to_s
+    @model.clear
+    @view.value.text = @model.display.to_s
   end
 
 end
