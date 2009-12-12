@@ -1,6 +1,6 @@
 class View
   
-  attr_reader :value
+  attr_reader :value, :buttons
   
   def initialize(controller)
     main_window = window(
@@ -18,27 +18,31 @@ class View
     )
     main_window << @value
     
-    buttons = view(:frame => [10, 10, 200, 240])
-    buttons << calc_button("C",   0, 4)       { controller.clear }
-    buttons << calc_button("√",   1, 4)       { controller.sqrt }
-    buttons << calc_button("/",   2, 4)       { controller.operand '/' }
-    buttons << calc_button("*",   3, 4)       { controller.operand '*' }
-    buttons << calc_button("7",   0, 3)       { controller.press '7' }
-    buttons << calc_button("8",   1, 3)       { controller.press '8' }
-    buttons << calc_button("9",   2, 3)       { controller.press '9' }
-    buttons << calc_button("-",   3, 3)       { controller.operand '-' }
-    buttons << calc_button("4",   0, 2)       { controller.press '4' }
-    buttons << calc_button("5",   1, 2)       { controller.press '5' }
-    buttons << calc_button("6",   2, 2)       { controller.press '6' }
-    buttons << calc_button("+",   3, 2)       { controller.operand '+' }
-    buttons << calc_button("1",   0, 1)       { controller.press '1' }
-    buttons << calc_button("2",   1, 1)       { controller.press '2' }
-    buttons << calc_button("3",   2, 1)       { controller.press '3' }
-    buttons << calc_button("=",   3, 1, 0, 1) { controller.evaluate }
-    buttons << calc_button("0",   0, 0, 1, 0) { controller.press '0' }
-    buttons << calc_button(".",   2, 0)       { controller.press '.' }
+    @buttons = {}
+    @buttons['C'] = calc_button("C",   0, 4)
+    @buttons['√'] = calc_button("√",   1, 4)
+    @buttons['/'] = calc_button("/",   2, 4)
+    @buttons['*'] = calc_button("*",   3, 4)
+    @buttons['7'] = calc_button("7",   0, 3)
+    @buttons['8'] = calc_button("8",   1, 3)
+    @buttons['9'] = calc_button("9",   2, 3)
+    @buttons['-'] = calc_button("-",   3, 3)
+    @buttons['4'] = calc_button("4",   0, 2)
+    @buttons['5'] = calc_button("5",   1, 2)
+    @buttons['6'] = calc_button("6",   2, 2)
+    @buttons['+'] = calc_button("+",   3, 2)
+    @buttons['1'] = calc_button("1",   0, 1)
+    @buttons['2'] = calc_button("2",   1, 1)
+    @buttons['3'] = calc_button("3",   2, 1)
+    @buttons['='] = calc_button("=",   3, 1, 0, 1)
+    @buttons['0'] = calc_button("0",   0, 0, 1, 0)
+    @buttons['.'] = calc_button(".",   2, 0)
     
-    main_window << buttons
+    buttons_view = view(:frame => [10, 10, 200, 240])
+    @buttons.values.each do |b|
+      buttons_view << b
+    end
+    main_window << buttons_view
     main_window.will_close { exit }
   end
   
