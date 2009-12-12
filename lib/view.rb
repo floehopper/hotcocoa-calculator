@@ -46,6 +46,10 @@ class View
     main_window.will_close { exit }
   end
   
+  def update_value(text)
+    @value.text = text
+  end
+  
   private
   
   def calc_button(name, x, y, w=0, h=0)

@@ -3,8 +3,6 @@ require 'display'
 
 class Model
   
-  attr_reader :display
-  
   def initialize
     @accumulator = Accumulator.new
     @display = Display.new
@@ -33,6 +31,10 @@ class Model
   
   def clear
     @display.clear
+  end
+  
+  def current_value
+    @display.to_s
   end
   
 end

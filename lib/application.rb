@@ -1,18 +1,9 @@
-#
-# Port of Jon Lipsky's weblog post: http://blog.elevenworks.com/?p=38
-#
-require 'hotcocoa'
-
-include HotCocoa
+require 'hotcocoa'; include HotCocoa
 
 require 'model'
 require 'view'
 
 class Calculator
-  
-  def self.on
-    self.new.show
-  end
   
   def initialize
     @model = Model.new
@@ -35,12 +26,12 @@ class Calculator
   
   def evaluate
     @model.evaluate
-    @view.value.text = @model.display.to_s
+    @view.update_value(@model.current_value)
   end
   
   def press(key)
     @model.press(key)
-    @view.value.text = @model.display.to_s
+    @view.update_value(@model.current_value)
   end
   
   def operand(key)
@@ -49,14 +40,14 @@ class Calculator
   
   def sqrt
     @model.sqrt
-    @view.value.text = @model.display.to_s
+    @view.update_value(@model.current_value)
   end
   
   def clear
     @model.clear
-    @view.value.text = @model.display.to_s
+    @view.update_value(@model.current_value)
   end
-
+  
 end
 
-Calculator.on
+Calculator.new.show
