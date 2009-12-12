@@ -50,4 +50,10 @@ class BasicTest < Test::Unit::TestCase
     displays_number('1')
   end
   
+  def test_can_enter_ten_digits
+    input_with_buttons('1234567890')
+    
+    displays_number('1234567890')
+  end
+  
 end
