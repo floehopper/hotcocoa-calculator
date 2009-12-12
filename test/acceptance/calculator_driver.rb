@@ -42,7 +42,7 @@ module CalculatorDriver
   end
   
   def click_button(character)
-    buttons = %w(C 0 1 2 3 4 5 6 7 8 9 . + - * / =)
+    buttons = %w(C 0 1 2 3 4 5 6 7 8 9 . + - * / = √)
     if buttons.include?(character)
       @buttons[character].click
     else
