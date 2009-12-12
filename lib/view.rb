@@ -19,24 +19,24 @@ class View
     main_window << @value
     
     @buttons = {}
-    @buttons['C'] = calc_button("C",   0, 4)
-    @buttons['√'] = calc_button("√",   1, 4)
-    @buttons['/'] = calc_button("/",   2, 4)
-    @buttons['*'] = calc_button("*",   3, 4)
-    @buttons['7'] = calc_button("7",   0, 3)
-    @buttons['8'] = calc_button("8",   1, 3)
-    @buttons['9'] = calc_button("9",   2, 3)
-    @buttons['-'] = calc_button("-",   3, 3)
-    @buttons['4'] = calc_button("4",   0, 2)
-    @buttons['5'] = calc_button("5",   1, 2)
-    @buttons['6'] = calc_button("6",   2, 2)
-    @buttons['+'] = calc_button("+",   3, 2)
-    @buttons['1'] = calc_button("1",   0, 1)
-    @buttons['2'] = calc_button("2",   1, 1)
-    @buttons['3'] = calc_button("3",   2, 1)
-    @buttons['='] = calc_button("=",   3, 1, 0, 1)
-    @buttons['0'] = calc_button("0",   0, 0, 1, 0)
-    @buttons['.'] = calc_button(".",   2, 0)
+    @buttons['C'] = calc_button("C", 0, 4)
+    @buttons['√'] = calc_button("√", 1, 4)
+    @buttons['/'] = calc_button("/", 2, 4)
+    @buttons['*'] = calc_button("*", 3, 4)
+    @buttons['7'] = calc_button("7", 0, 3)
+    @buttons['8'] = calc_button("8", 1, 3)
+    @buttons['9'] = calc_button("9", 2, 3)
+    @buttons['-'] = calc_button("-", 3, 3)
+    @buttons['4'] = calc_button("4", 0, 2)
+    @buttons['5'] = calc_button("5", 1, 2)
+    @buttons['6'] = calc_button("6", 2, 2)
+    @buttons['+'] = calc_button("+", 3, 2)
+    @buttons['1'] = calc_button("1", 0, 1)
+    @buttons['2'] = calc_button("2", 1, 1)
+    @buttons['3'] = calc_button("3", 2, 1)
+    @buttons['='] = calc_button("=", 3, 1, 0, 1)
+    @buttons['0'] = calc_button("0", 0, 0, 1, 0)
+    @buttons['.'] = calc_button(".", 2, 0)
     
     buttons_view = view(:frame => [10, 10, 200, 240])
     @buttons.values.each do |b|
@@ -48,12 +48,12 @@ class View
   
   private
   
-  def calc_button(name, x, y, w=0, h=0, &block)
+  def calc_button(name, x, y, w=0, h=0)
     button(
       :title => name,
       :bezel => :regular_square,
       :frame => [x*50, y*43-h*43, 47+w*50, 40+h*43]
-    ).on_action(&block)
+    )
   end
   
 end
