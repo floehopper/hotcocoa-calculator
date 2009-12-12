@@ -31,4 +31,5 @@ suite << SubtractionTest.suite
 suite << MultiplicationTest.suite
 suite << DivisionTest.suite
 
-Test::Unit::UI::Console::TestRunner.run(suite)
+runner = Test::Unit::UI::Console::TestRunner.new(suite, Test::Unit::UI::VERBOSE)
+runner.start
