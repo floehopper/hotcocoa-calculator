@@ -1,6 +1,6 @@
 class View
   
-  attr_reader :value, :buttons
+  attr_reader :buttons
   
   def initialize(controller)
     main_window = window(
